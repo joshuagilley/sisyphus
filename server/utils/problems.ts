@@ -1,6 +1,5 @@
-import { readFile } from "node:fs/promises"
-import { join } from "node:path"
 import type { Problem } from "./types"
+import problemsData from "~/data/problems.json"
 
 let cachedProblems: Problem[] | null = null
 
@@ -9,9 +8,7 @@ export async function getProblems(): Promise<Problem[]> {
     return cachedProblems
   }
 
-  const filePath = join(process.cwd(), "data", "problems.json")
-  const raw = await readFile(filePath, "utf-8")
-  const parsed = JSON.parse(raw) as Problem[]
+  const parsed = problemsData as Problem[]
 
   cachedProblems = parsed
   return parsed
