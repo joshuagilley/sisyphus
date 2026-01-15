@@ -1,19 +1,26 @@
-app = "sisyphus"
-primary_region = "iad"
+# fly.toml app configuration file generated for sisyphus-summer-sun-3306 on 2026-01-14T21:33:42-05:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'sisyphus-summer-sun-3306'
+primary_region = 'iad'
 
 [build]
 
 [env]
-  PORT = "3000"
+  PORT = '3000'
+  NITRO_PORT = '3000'
+  NITRO_HOST = '0.0.0.0'
 
 [http_service]
   internal_port = 3000
   force_https = true
+  auto_stop_machines = 'stop'
   auto_start_machines = true
-  auto_stop_machines = "stop"
   min_machines_running = 0
-  processes = ["app"]
+  processes = ['app']
 
 [[vm]]
-  size = "shared-cpu-1x"
-  memory = "512mb"
+  size = 'shared-cpu-1x'
+  memory = '512mb'

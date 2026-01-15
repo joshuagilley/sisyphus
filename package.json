@@ -11,5 +11,8 @@
   "dependencies": {
     "mongoose": "^8.6.1",
     "nuxt": "^3.12.4"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.7.10"
   }
 }
