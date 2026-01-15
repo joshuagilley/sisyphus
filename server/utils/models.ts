@@ -20,6 +20,20 @@ type SubmissionDocument = {
   createdAt: Date
 }
 
+type ProblemDocument = {
+  _id: string
+  title: string
+  difficulty: "Easy" | "Medium" | "Hard"
+  topicTags: string[]
+  prompt: string
+  functionName: string
+  params: string[]
+  testCases: Array<{
+    input: unknown[]
+    expected: unknown
+  }>
+}
+
 const TestResultSchema = new Schema<TestResult>(
   {
     input: [Schema.Types.Mixed],
@@ -60,6 +74,22 @@ const SubmissionSchema = new Schema<SubmissionDocument>(
   }
 )
 
+const ProblemSchema = new Schema<ProblemDocument>(
+  {
+    _id: { type: String, required: true },
+    title: { type: String, required: true },
+    difficulty: { type: String, required: true },
+    topicTags: { type: [String], required: true, default: [] },
+    prompt: { type: String, required: true },
+    functionName: { type: String, required: true },
+    params: { type: [String], required: true, default: [] },
+    testCases: { type: [Schema.Types.Mixed], required: true, default: [] }
+  },
+  {
+    collection: "problems"
+  }
+)
+
 export const ProgressModel =
   mongoose.models.Progress ||
   mongoose.model<ProgressDocument>("Progress", ProgressSchema)
@@ -67,3 +97,7 @@ export const ProgressModel =
 export const SubmissionModel =
   mongoose.models.Submission ||
   mongoose.model<SubmissionDocument>("Submission", SubmissionSchema)
+
+export const ProblemModel =
+  mongoose.models.Problem ||
+  mongoose.model<ProblemDocument>("Problem", ProblemSchema)

@@ -1459,19 +1459,19 @@ _dTbpNikxSDH1S96c2vnN2iNpCYMZT1NexApKlDatsfQ
 ];
 
 const assets = {
-  "/index.mjs.map": {
-    "type": "application/json",
-    "etag": "\"57e30-/3UVRFFhsuslUf7gua4BZ7KZQxI\"",
-    "mtime": "2026-01-15T03:37:23.170Z",
-    "size": 359984,
-    "path": "index.mjs.map"
-  },
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"172b8-OH0T7TxFbYoPDEOaGHrIe6Dqq7Q\"",
-    "mtime": "2026-01-15T03:37:23.170Z",
-    "size": 94904,
+    "etag": "\"18cf7-eVrlDUwCxJz71Y5A3pyuGj/2cDo\"",
+    "mtime": "2026-01-15T03:48:43.276Z",
+    "size": 101623,
     "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"59ad7-kbduupOOR0s2nfb089xkkw3rMJ8\"",
+    "mtime": "2026-01-15T03:48:43.276Z",
+    "size": 367319,
+    "path": "index.mjs.map"
   }
 };
 
@@ -2325,23 +2325,381 @@ const problemsData = [
 				expected: true
 			}
 		]
+	},
+	{
+		slug: "palindrome-number",
+		title: "Palindrome Number",
+		difficulty: "Easy",
+		topicTags: [
+			"Math"
+		],
+		prompt: "Given an integer x, return true if x is a palindrome, and false otherwise.",
+		functionName: "isPalindrome",
+		params: [
+			"x"
+		],
+		testCases: [
+			{
+				input: [
+					121
+				],
+				expected: true
+			},
+			{
+				input: [
+					-121
+				],
+				expected: false
+			},
+			{
+				input: [
+					10
+				],
+				expected: false
+			},
+			{
+				input: [
+					0
+				],
+				expected: true
+			}
+		]
+	},
+	{
+		slug: "best-time-to-buy-and-sell-stock",
+		title: "Best Time to Buy and Sell Stock",
+		difficulty: "Easy",
+		topicTags: [
+			"Array",
+			"Dynamic Programming"
+		],
+		prompt: "Given an array prices where prices[i] is the price of a given stock on the ith day, return the maximum profit.",
+		functionName: "maxProfit",
+		params: [
+			"prices"
+		],
+		testCases: [
+			{
+				input: [
+					[
+						7,
+						1,
+						5,
+						3,
+						6,
+						4
+					]
+				],
+				expected: 5
+			},
+			{
+				input: [
+					[
+						7,
+						6,
+						4,
+						3,
+						1
+					]
+				],
+				expected: 0
+			},
+			{
+				input: [
+					[
+						1,
+						2,
+						3,
+						4,
+						5
+					]
+				],
+				expected: 4
+			}
+		]
+	},
+	{
+		slug: "roman-to-integer",
+		title: "Roman to Integer",
+		difficulty: "Easy",
+		topicTags: [
+			"Hash Table",
+			"Math",
+			"String"
+		],
+		prompt: "Given a roman numeral, convert it to an integer.",
+		functionName: "romanToInt",
+		params: [
+			"s"
+		],
+		testCases: [
+			{
+				input: [
+					"III"
+				],
+				expected: 3
+			},
+			{
+				input: [
+					"LVIII"
+				],
+				expected: 58
+			},
+			{
+				input: [
+					"MCMXCIV"
+				],
+				expected: 1994
+			}
+		]
+	},
+	{
+		slug: "longest-substring-without-repeating-characters",
+		title: "Longest Substring Without Repeating Characters",
+		difficulty: "Medium",
+		topicTags: [
+			"Hash Table",
+			"String",
+			"Sliding Window"
+		],
+		prompt: "Given a string s, find the length of the longest substring without repeating characters.",
+		functionName: "lengthOfLongestSubstring",
+		params: [
+			"s"
+		],
+		testCases: [
+			{
+				input: [
+					"abcabcbb"
+				],
+				expected: 3
+			},
+			{
+				input: [
+					"bbbbb"
+				],
+				expected: 1
+			},
+			{
+				input: [
+					"pwwkew"
+				],
+				expected: 3
+			},
+			{
+				input: [
+					""
+				],
+				expected: 0
+			}
+		]
+	},
+	{
+		slug: "container-with-most-water",
+		title: "Container With Most Water",
+		difficulty: "Medium",
+		topicTags: [
+			"Array",
+			"Two Pointers",
+			"Greedy"
+		],
+		prompt: "Given n non-negative integers height, find two lines that together with the x-axis form a container that holds the most water.",
+		functionName: "maxArea",
+		params: [
+			"height"
+		],
+		testCases: [
+			{
+				input: [
+					[
+						1,
+						8,
+						6,
+						2,
+						5,
+						4,
+						8,
+						3,
+						7
+					]
+				],
+				expected: 49
+			},
+			{
+				input: [
+					[
+						1,
+						1
+					]
+				],
+				expected: 1
+			},
+			{
+				input: [
+					[
+						4,
+						3,
+						2,
+						1,
+						4
+					]
+				],
+				expected: 16
+			}
+		]
+	},
+	{
+		slug: "longest-palindromic-substring",
+		title: "Longest Palindromic Substring",
+		difficulty: "Medium",
+		topicTags: [
+			"Two Pointers",
+			"String",
+			"Dynamic Programming"
+		],
+		prompt: "Given a string s, return the longest palindromic substring in s.",
+		functionName: "longestPalindrome",
+		params: [
+			"s"
+		],
+		testCases: [
+			{
+				input: [
+					"cbbd"
+				],
+				expected: "bb"
+			},
+			{
+				input: [
+					"racecar"
+				],
+				expected: "racecar"
+			},
+			{
+				input: [
+					"a"
+				],
+				expected: "a"
+			}
+		]
+	},
+	{
+		slug: "median-of-two-sorted-arrays",
+		title: "Median of Two Sorted Arrays",
+		difficulty: "Hard",
+		topicTags: [
+			"Array",
+			"Binary Search",
+			"Divide and Conquer"
+		],
+		prompt: "Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.",
+		functionName: "findMedianSortedArrays",
+		params: [
+			"nums1",
+			"nums2"
+		],
+		testCases: [
+			{
+				input: [
+					[
+						1,
+						3
+					],
+					[
+						2
+					]
+				],
+				expected: 2
+			},
+			{
+				input: [
+					[
+						1,
+						2
+					],
+					[
+						3,
+						4
+					]
+				],
+				expected: 2.5
+			},
+			{
+				input: [
+					[
+						0,
+						0
+					],
+					[
+						0,
+						0
+					]
+				],
+				expected: 0
+			}
+		]
+	},
+	{
+		slug: "trapping-rain-water",
+		title: "Trapping Rain Water",
+		difficulty: "Hard",
+		topicTags: [
+			"Array",
+			"Two Pointers",
+			"Dynamic Programming",
+			"Stack"
+		],
+		prompt: "Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it can trap after raining.",
+		functionName: "trap",
+		params: [
+			"height"
+		],
+		testCases: [
+			{
+				input: [
+					[
+						0,
+						1,
+						0,
+						2,
+						1,
+						0,
+						1,
+						3,
+						2,
+						1,
+						2,
+						1
+					]
+				],
+				expected: 6
+			},
+			{
+				input: [
+					[
+						4,
+						2,
+						0,
+						3,
+						2,
+						5
+					]
+				],
+				expected: 9
+			},
+			{
+				input: [
+					[
+						2,
+						0,
+						2
+					]
+				],
+				expected: 2
+			}
+		]
 	}
 ];
-
-let cachedProblems = null;
-async function getProblems() {
-  if (cachedProblems) {
-    return cachedProblems;
-  }
-  const parsed = problemsData;
-  cachedProblems = parsed;
-  return parsed;
-}
-async function getProblemBySlug(slug) {
-  var _a;
-  const problems = await getProblems();
-  return (_a = problems.find((problem) => problem.slug === slug)) != null ? _a : null;
-}
 
 const uri = process.env.MONGODB_URI;
 const dbName = process.env.MONGODB_DB;
@@ -2395,8 +2753,76 @@ const SubmissionSchema = new Schema(
     collection: "submissions"
   }
 );
+const ProblemSchema = new Schema(
+  {
+    _id: { type: String, required: true },
+    title: { type: String, required: true },
+    difficulty: { type: String, required: true },
+    topicTags: { type: [String], required: true, default: [] },
+    prompt: { type: String, required: true },
+    functionName: { type: String, required: true },
+    params: { type: [String], required: true, default: [] },
+    testCases: { type: [Schema.Types.Mixed], required: true, default: [] }
+  },
+  {
+    collection: "problems"
+  }
+);
 const ProgressModel = mongoose.models.Progress || mongoose.model("Progress", ProgressSchema);
 const SubmissionModel = mongoose.models.Submission || mongoose.model("Submission", SubmissionSchema);
+const ProblemModel = mongoose.models.Problem || mongoose.model("Problem", ProblemSchema);
+
+let cachedProblems = null;
+async function getProblems() {
+  if (cachedProblems) {
+    return cachedProblems;
+  }
+  await connectToDatabase();
+  const existing = await ProblemModel.find().lean();
+  if (existing.length === 0) {
+    const seedData = problemsData.map((problem) => ({
+      _id: problem.slug,
+      title: problem.title,
+      difficulty: problem.difficulty,
+      topicTags: problem.topicTags,
+      prompt: problem.prompt,
+      functionName: problem.functionName,
+      params: problem.params,
+      testCases: problem.testCases
+    }));
+    if (seedData.length > 0) {
+      await ProblemModel.insertMany(seedData, { ordered: false });
+    }
+  }
+  const docs = await ProblemModel.find().lean();
+  const parsed = docs.map((doc) => ({
+    slug: doc._id,
+    title: doc.title,
+    difficulty: doc.difficulty,
+    topicTags: doc.topicTags,
+    prompt: doc.prompt,
+    functionName: doc.functionName,
+    params: doc.params,
+    testCases: doc.testCases
+  }));
+  cachedProblems = parsed;
+  return parsed;
+}
+async function getProblemBySlug(slug) {
+  await connectToDatabase();
+  const doc = await ProblemModel.findById(slug).lean();
+  if (!doc) return null;
+  return {
+    slug: doc._id,
+    title: doc.title,
+    difficulty: doc.difficulty,
+    topicTags: doc.topicTags,
+    prompt: doc.prompt,
+    functionName: doc.functionName,
+    params: doc.params,
+    testCases: doc.testCases
+  };
+}
 
 async function getProgressEntries() {
   try {

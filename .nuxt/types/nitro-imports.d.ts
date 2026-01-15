@@ -1,4 +1,5 @@
 declare global {
+  const ProblemModel: typeof import('../../server/utils/models').ProblemModel
   const ProgressModel: typeof import('../../server/utils/models').ProgressModel
   const SubmissionModel: typeof import('../../server/utils/models').SubmissionModel
   const __buildAssetsURL: typeof import('../../node_modules/@nuxt/nitro-server/dist/runtime/utils/paths').buildAssetsURL
@@ -155,7 +156,7 @@ export { appendCorsHeaders, appendCorsPreflightHeaders, appendHeader, appendHead
 export { buildAssetsURL as __buildAssetsURL, publicAssetsURL as __publicAssetsURL } from '/Users/joshuagilley/Documents/Personal Projects/sisyphus/node_modules/@nuxt/nitro-server/dist/runtime/utils/paths';
 export { defineAppConfig } from '/Users/joshuagilley/Documents/Personal Projects/sisyphus/node_modules/@nuxt/nitro-server/dist/runtime/utils/config';
 export { connectToDatabase } from '/Users/joshuagilley/Documents/Personal Projects/sisyphus/server/utils/db';
-export { ProgressModel, SubmissionModel } from '/Users/joshuagilley/Documents/Personal Projects/sisyphus/server/utils/models';
+export { ProgressModel, SubmissionModel, ProblemModel } from '/Users/joshuagilley/Documents/Personal Projects/sisyphus/server/utils/models';
 export { getProblems, getProblemBySlug } from '/Users/joshuagilley/Documents/Personal Projects/sisyphus/server/utils/problems';
 export { getProgressEntries, getProgressBySlug, upsertProgress } from '/Users/joshuagilley/Documents/Personal Projects/sisyphus/server/utils/progress';
 export { runSolution } from '/Users/joshuagilley/Documents/Personal Projects/sisyphus/server/utils/runner';
