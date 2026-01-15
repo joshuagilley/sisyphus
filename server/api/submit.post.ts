@@ -36,6 +36,7 @@ export default defineEventHandler(async (event) => {
   const updated = {
     attempts: (previous?.attempts ?? 0) + 1,
     solved: Boolean(previous?.solved || runResult.passedAll),
+    solutionText: solutionBody,
     lastResult: runResult,
     updatedAt: now
   }

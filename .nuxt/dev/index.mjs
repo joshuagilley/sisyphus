@@ -5,7 +5,6 @@ import { resolve, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
 import { escapeHtml } from 'file:///Users/joshuagilley/Documents/Personal%20Projects/sisyphus/node_modules/@vue/shared/dist/shared.cjs.js';
-import { readFile } from 'node:fs/promises';
 import mongoose, { Schema } from 'file:///Users/joshuagilley/Documents/Personal%20Projects/sisyphus/node_modules/mongoose/index.js';
 import vm from 'node:vm';
 import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///Users/joshuagilley/Documents/Personal%20Projects/sisyphus/node_modules/vue-bundle-renderer/dist/runtime.mjs';
@@ -24,6 +23,7 @@ import defu, { defuFn } from 'file:///Users/joshuagilley/Documents/Personal%20Pr
 import { snakeCase } from 'file:///Users/joshuagilley/Documents/Personal%20Projects/sisyphus/node_modules/scule/dist/index.mjs';
 import { getContext } from 'file:///Users/joshuagilley/Documents/Personal%20Projects/sisyphus/node_modules/unctx/dist/index.mjs';
 import { toRouteMatcher, createRouter } from 'file:///Users/joshuagilley/Documents/Personal%20Projects/sisyphus/node_modules/radix3/dist/index.mjs';
+import { readFile } from 'node:fs/promises';
 import consola, { consola as consola$1 } from 'file:///Users/joshuagilley/Documents/Personal%20Projects/sisyphus/node_modules/consola/dist/index.mjs';
 import { ErrorParser } from 'file:///Users/joshuagilley/Documents/Personal%20Projects/sisyphus/node_modules/youch-core/build/index.js';
 import { Youch } from 'file:///Users/joshuagilley/Documents/Personal%20Projects/sisyphus/node_modules/youch/build/index.js';
@@ -1459,19 +1459,19 @@ _dTbpNikxSDH1S96c2vnN2iNpCYMZT1NexApKlDatsfQ
 ];
 
 const assets = {
-  "/index.mjs": {
-    "type": "text/javascript; charset=utf-8",
-    "etag": "\"16e0c-EPbUXWJwChQXFBoXlDToDXvZq2g\"",
-    "mtime": "2026-01-15T02:31:03.313Z",
-    "size": 93708,
-    "path": "index.mjs"
-  },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"57852-IbZ0Gzl0NW/iApH7pIDInURagfY\"",
-    "mtime": "2026-01-15T02:31:03.314Z",
-    "size": 358482,
+    "etag": "\"57e30-/3UVRFFhsuslUf7gua4BZ7KZQxI\"",
+    "mtime": "2026-01-15T03:37:23.170Z",
+    "size": 359984,
     "path": "index.mjs.map"
+  },
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"172b8-OH0T7TxFbYoPDEOaGHrIe6Dqq7Q\"",
+    "mtime": "2026-01-15T03:37:23.170Z",
+    "size": 94904,
+    "path": "index.mjs"
   }
 };
 
@@ -2226,14 +2226,114 @@ const styles$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   default: styles
 }, Symbol.toStringTag, { value: 'Module' }));
 
+const problemsData = [
+	{
+		slug: "two-sum",
+		title: "Two Sum",
+		difficulty: "Easy",
+		topicTags: [
+			"Array",
+			"Hash Table"
+		],
+		prompt: "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+		functionName: "twoSum",
+		params: [
+			"nums",
+			"target"
+		],
+		testCases: [
+			{
+				input: [
+					[
+						2,
+						7,
+						11,
+						15
+					],
+					9
+				],
+				expected: [
+					0,
+					1
+				]
+			},
+			{
+				input: [
+					[
+						3,
+						2,
+						4
+					],
+					6
+				],
+				expected: [
+					1,
+					2
+				]
+			},
+			{
+				input: [
+					[
+						3,
+						3
+					],
+					6
+				],
+				expected: [
+					0,
+					1
+				]
+			}
+		]
+	},
+	{
+		slug: "valid-parentheses",
+		title: "Valid Parentheses",
+		difficulty: "Easy",
+		topicTags: [
+			"String",
+			"Stack"
+		],
+		prompt: "Given a string s containing just the characters (), {}, and [], determine if the input string is valid.",
+		functionName: "isValid",
+		params: [
+			"s"
+		],
+		testCases: [
+			{
+				input: [
+					"()"
+				],
+				expected: true
+			},
+			{
+				input: [
+					"()[]{}"
+				],
+				expected: true
+			},
+			{
+				input: [
+					"(]"
+				],
+				expected: false
+			},
+			{
+				input: [
+					"([])"
+				],
+				expected: true
+			}
+		]
+	}
+];
+
 let cachedProblems = null;
 async function getProblems() {
   if (cachedProblems) {
     return cachedProblems;
   }
-  const filePath = join(process.cwd(), "data", "problems.json");
-  const raw = await readFile(filePath, "utf-8");
-  const parsed = JSON.parse(raw);
+  const parsed = problemsData;
   cachedProblems = parsed;
   return parsed;
 }
@@ -2273,6 +2373,7 @@ const ProgressSchema = new Schema(
     _id: { type: String, required: true },
     attempts: { type: Number, required: true, default: 0 },
     solved: { type: Boolean, required: true, default: false },
+    solutionText: { type: String },
     lastResult: {
       passedAll: Boolean,
       results: [TestResultSchema]
@@ -2298,26 +2399,38 @@ const ProgressModel = mongoose.models.Progress || mongoose.model("Progress", Pro
 const SubmissionModel = mongoose.models.Submission || mongoose.model("Submission", SubmissionSchema);
 
 async function getProgressEntries() {
-  await connectToDatabase();
-  const docs = await ProgressModel.find().lean();
-  return docs.map((doc) => ({
-    slug: doc._id,
-    attempts: doc.attempts,
-    solved: doc.solved,
-    lastResult: doc.lastResult,
-    updatedAt: doc.updatedAt.toISOString()
-  }));
+  try {
+    await connectToDatabase();
+    const docs = await ProgressModel.find().lean();
+    return docs.map((doc) => ({
+      slug: doc._id,
+      attempts: doc.attempts,
+      solved: doc.solved,
+      solutionText: doc.solutionText,
+      lastResult: doc.lastResult,
+      updatedAt: doc.updatedAt.toISOString()
+    }));
+  } catch (error) {
+    console.error("Failed to load progress entries.", error);
+    return [];
+  }
 }
 async function getProgressBySlug(slug) {
-  await connectToDatabase();
-  const doc = await ProgressModel.findById(slug).lean();
-  if (!doc) return null;
-  return {
-    attempts: doc.attempts,
-    solved: doc.solved,
-    lastResult: doc.lastResult,
-    updatedAt: doc.updatedAt.toISOString()
-  };
+  try {
+    await connectToDatabase();
+    const doc = await ProgressModel.findById(slug).lean();
+    if (!doc) return null;
+    return {
+      attempts: doc.attempts,
+      solved: doc.solved,
+      solutionText: doc.solutionText,
+      lastResult: doc.lastResult,
+      updatedAt: doc.updatedAt.toISOString()
+    };
+  } catch (error) {
+    console.error(`Failed to load progress for ${slug}.`, error);
+    return null;
+  }
 }
 async function upsertProgress(slug, entry) {
   await connectToDatabase();
@@ -2327,6 +2440,7 @@ async function upsertProgress(slug, entry) {
       _id: slug,
       attempts: entry.attempts,
       solved: entry.solved,
+      solutionText: entry.solutionText,
       lastResult: entry.lastResult,
       updatedAt: new Date(entry.updatedAt)
     },
@@ -2482,6 +2596,7 @@ const submit_post = defineEventHandler(async (event) => {
   const updated = {
     attempts: ((_c = previous == null ? void 0 : previous.attempts) != null ? _c : 0) + 1,
     solved: Boolean((previous == null ? void 0 : previous.solved) || runResult.passedAll),
+    solutionText: solutionBody,
     lastResult: runResult,
     updatedAt: now
   };

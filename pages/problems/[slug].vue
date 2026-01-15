@@ -89,6 +89,7 @@ type SubmitResult = {
 type Progress = {
   attempts: number
   solved: boolean
+  solutionText?: string
   lastResult?: {
     passedAll: boolean
     results: TestResult[]
@@ -110,6 +111,12 @@ const progress = ref<Progress | null>(null)
 watchEffect(() => {
   if (data.value?.progress) {
     progress.value = data.value.progress
+  }
+})
+
+watchEffect(() => {
+  if (data.value?.progress?.solutionText) {
+    solutionBody.value = data.value.progress.solutionText
   }
 })
 

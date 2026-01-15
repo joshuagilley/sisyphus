@@ -5,6 +5,7 @@ type ProgressDocument = {
   _id: string
   attempts: number
   solved: boolean
+  solutionText?: string
   lastResult?: {
     passedAll: boolean
     results: TestResult[]
@@ -35,6 +36,7 @@ const ProgressSchema = new Schema<ProgressDocument>(
     _id: { type: String, required: true },
     attempts: { type: Number, required: true, default: 0 },
     solved: { type: Boolean, required: true, default: false },
+    solutionText: { type: String },
     lastResult: {
       passedAll: Boolean,
       results: [TestResultSchema]

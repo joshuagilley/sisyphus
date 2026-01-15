@@ -12,6 +12,7 @@ export async function getProgressEntries(): Promise<
       slug: doc._id,
       attempts: doc.attempts,
       solved: doc.solved,
+      solutionText: doc.solutionText,
       lastResult: doc.lastResult,
       updatedAt: doc.updatedAt.toISOString()
     }))
@@ -32,6 +33,7 @@ export async function getProgressBySlug(
     return {
       attempts: doc.attempts,
       solved: doc.solved,
+      solutionText: doc.solutionText,
       lastResult: doc.lastResult,
       updatedAt: doc.updatedAt.toISOString()
     }
@@ -52,6 +54,7 @@ export async function upsertProgress(
       _id: slug,
       attempts: entry.attempts,
       solved: entry.solved,
+      solutionText: entry.solutionText,
       lastResult: entry.lastResult,
       updatedAt: new Date(entry.updatedAt)
     },

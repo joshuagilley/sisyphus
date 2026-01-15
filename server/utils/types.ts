@@ -23,6 +23,7 @@ export type TestResult = {
 export type ProgressEntry = {
   attempts: number
   solved: boolean
+  solutionText?: string
   lastResult?: {
     passedAll: boolean
     results: TestResult[]
