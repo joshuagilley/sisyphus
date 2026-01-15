@@ -1,0 +1,15 @@
+{
+  "name": "sisyphus",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "nuxt preview",
+    "start": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "mongoose": "^8.6.1",
+    "nuxt": "^3.12.4"
+  }
+}

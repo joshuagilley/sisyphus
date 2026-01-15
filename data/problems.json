@@ -1,0 +1,31 @@
+[
+  {
+    "slug": "two-sum",
+    "title": "Two Sum",
+    "difficulty": "Easy",
+    "topicTags": ["Array", "Hash Table"],
+    "prompt": "Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.",
+    "functionName": "twoSum",
+    "params": ["nums", "target"],
+    "testCases": [
+      { "input": [[2, 7, 11, 15], 9], "expected": [0, 1] },
+      { "input": [[3, 2, 4], 6], "expected": [1, 2] },
+      { "input": [[3, 3], 6], "expected": [0, 1] }
+    ]
+  },
+  {
+    "slug": "valid-parentheses",
+    "title": "Valid Parentheses",
+    "difficulty": "Easy",
+    "topicTags": ["String", "Stack"],
+    "prompt": "Given a string s containing just the characters (), {}, and [], determine if the input string is valid.",
+    "functionName": "isValid",
+    "params": ["s"],
+    "testCases": [
+      { "input": ["()"], "expected": true },
+      { "input": ["()[]{}"], "expected": true },
+      { "input": ["(]"], "expected": false },
+      { "input": ["([])"], "expected": true }
+    ]
+  }
+]
