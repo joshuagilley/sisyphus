@@ -8,6 +8,9 @@ primary_region = 'iad'
 
 [build]
 
+[processes]
+  app = "node .output/server/index.mjs"
+
 [env]
   PORT = '3000'
   NITRO_PORT = '3000'
